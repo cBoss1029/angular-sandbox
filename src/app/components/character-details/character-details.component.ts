@@ -15,6 +15,7 @@ export class CharacterDetailsComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
+      // TODO: handle error if id is not found and redirect to home page
       if (id) {
         this.charactersDataService.getCharacterDetails(id).pipe(take(1)).subscribe((data: any) => {
           this.characterDetails = data.data.results[0];

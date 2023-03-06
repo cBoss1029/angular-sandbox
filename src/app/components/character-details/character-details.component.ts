@@ -9,14 +9,16 @@ import { CharactersDataService } from '../../services/characters-data.service';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent {
-  characterDetails: any = '';
+  characterDetails: any = {};
+  isLoaded = false;
   constructor(private route: ActivatedRoute, private charactersDataService: CharactersDataService, private router: Router) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       if (id) {
         this.charactersDataService.getCharacterDetails(id).pipe(take(1)).subscribe((data: any) => {
-          this.characterDetails = data.data.results;
+          this.characterDetails = data.data.results[0];
+          this.isLoaded = true;
         });
       }
     });

@@ -1,2 +1,17 @@
 <button (click)="goBack()">Back</button>
-<p class="deets">{{characterDetails | json}}</p>
+<div class="content">
+  <div *ngIf="isLoaded; else loading" class="details">
+    <img src="{{characterDetails.thumbnail.path}}.{{characterDetails.thumbnail.extension}}" height="80" />
+    <h2>{{characterDetails.name}}</h2>
+    <p class="description">{{characterDetails.description}}</p>
+    <p>Comics: {{characterDetails.comics.available}}</p>
+    <p>Series: {{characterDetails.series.available}}</p>
+    <p>Stories: {{characterDetails.stories.available}}</p>
+    <p>Events: {{characterDetails.events.available}}</p>
+  </div>
+  <ng-template #loading>
+    <span>
+      Loading...
+    </span>
+  </ng-template>
+</div>

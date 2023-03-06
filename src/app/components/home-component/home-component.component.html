@@ -13,7 +13,10 @@
   </ng-autocomplete>
 
   <ng-template #itemTemplate let-item>
-    <a [innerHTML]="item.name"></a>
+    <div class="list-item">
+      <img class="item-thumbnail" src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" />
+      <span [innerHTML]="item.name"></span>
+    </div>
   </ng-template>
 
   <ng-template #notFoundTemplate let-notFound>

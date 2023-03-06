@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { take } from 'rxjs';
 import { CharactersDataService } from '../../services/characters-data.service';
 
 @Component({
@@ -14,8 +15,7 @@ export class CharacterDetailsComponent {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       if (id) {
-        this.charactersDataService.getCharacterDetails(id).subscribe((data: any) => {
-          console.log(data.data.results);
+        this.charactersDataService.getCharacterDetails(id).pipe(take(1)).subscribe((data: any) => {
           this.characterDetails = data.data.results;
         });
       }

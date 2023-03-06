@@ -17,24 +17,18 @@ export class HomeComponentComponent {
   }
   ngOnInit(): void {
     this.charactersDataService.getCharactersList().pipe(take(1)).subscribe((data: any) => {
-      console.log(data.data.results);
       this.charactersList = data.data.results;
     }); 
   }
   selectEvent(item: any) {
     // do something with selected item
-    console.log(item);
     this.router.navigate(['/character', item.id]);
   }
 
   onChangeSearch(search: string) {
     // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
-    console.log(search);
+    this.charactersDataService.getFilteredCharactersList(search).pipe(take(1)).subscribe((data: any) => {
+      this.charactersList = data.data.results;
+    });
   }
-
-  onFocused(e: any) {
-    // do something
-  }
-
 }

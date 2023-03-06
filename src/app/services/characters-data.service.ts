@@ -16,4 +16,10 @@ export class CharactersDataService {
   getCharacterDetails(id: string) {
     return this.http.get(`${this.marvelApiUrl}characters/${id}?apikey=${environment.marvelApiKey}`);
   }
+  getFilteredCharactersList(nameStartsWith: string) {
+    if (nameStartsWith === '') {
+      return this.getCharactersList();
+    }
+    return this.http.get(`${this.marvelApiUrl}characters?nameStartsWith=${nameStartsWith}&apikey=${environment.marvelApiKey}`);
+  }
 }

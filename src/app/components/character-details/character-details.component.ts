@@ -9,6 +9,7 @@ import { CharactersDataService } from '../../services/characters-data.service';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent {
+  // TODO: add interface for Character
   characterDetails: any = {};
   isLoaded = false;
   constructor(private route: ActivatedRoute, private charactersDataService: CharactersDataService, private router: Router) { }

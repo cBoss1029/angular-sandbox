@@ -5,9 +5,11 @@
     [searchKeyword]="keyword"
     placeholder="Enter Character Name"
     (selected)='selectEvent($event)'
+    (inputChanged)='onChangeSearch($event)'
     historyIdentifier="countries"
     [itemTemplate]="itemTemplate"
-    [notFoundTemplate]="notFoundTemplate">
+    [notFoundTemplate]="notFoundTemplate"
+    [debounceTime]="debounceTime">
   </ng-autocomplete>
 
   <ng-template #itemTemplate let-item>

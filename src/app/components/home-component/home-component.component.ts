@@ -12,6 +12,7 @@ export class HomeComponentComponent {
 
   keyword = 'name';
   charactersList: any;
+  debounceTime = 500;
   constructor(private charactersDataService: CharactersDataService, private router: Router) {
   }
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class HomeComponentComponent {
   onChangeSearch(search: string) {
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
+    console.log(search);
   }
 
   onFocused(e: any) {
